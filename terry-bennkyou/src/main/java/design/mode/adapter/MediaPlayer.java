@@ -1,0 +1,5 @@
+package design.mode.adapter;
+
+public interface MediaPlayer {
+    void play(String audioType, String fileName);
+}
