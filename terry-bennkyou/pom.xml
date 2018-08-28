@@ -36,6 +36,11 @@
             <version>2.1</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>cglib</groupId>
+            <artifactId>cglib</artifactId>
+            <version>2.1_3</version>
+        </dependency>
         <!--jsp and servlet end -->
     </dependencies>
 </project>
