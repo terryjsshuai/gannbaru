@@ -35,9 +35,9 @@
     <orderEntry type="library" name="Maven: org.eclipse.jetty:jetty-webapp:9.2.9.v20150224" level="project" />
     <orderEntry type="library" name="Maven: org.eclipse.jetty:jetty-xml:9.2.9.v20150224" level="project" />
     <orderEntry type="library" name="Maven: org.eclipse.jetty:jetty-util:9.2.15.v20160210" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.jetty:jetty-http:9.2.9.v20150224" level="project" />
     <orderEntry type="library" name="Maven: org.eclipse.jetty:jetty-websocket:8.1.15.v20140411" level="project" />
-    <orderEntry type="library" name="Maven: org.eclipse.jetty:jetty-io:8.1.15.v20140411" level="project" />
-    <orderEntry type="library" name="Maven: org.eclipse.jetty:jetty-http:8.1.15.v20140411" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.jetty:jetty-io:9.2.9.v20150224" level="project" />
     <orderEntry type="library" name="Maven: org.eclipse.jetty.websocket:websocket-api:9.2.15.v20160210" level="project" />
     <orderEntry type="library" name="Maven: org.eclipse.jetty.websocket:websocket-servlet:9.2.26.v20180806" level="project" />
     <orderEntry type="library" name="Maven: javax.servlet:javax.servlet-api:3.1.0" level="project" />
