@@ -4,6 +4,25 @@
     <meta charset="utf-8"/>
     <title>Chat</title>
     <link href="style.css" rel="stylesheet">
+    <style>
+        .radius6 {
+            -moz-border-radius: 6px;
+            -ms-border-radius: 6px;
+            -o-border-radius: 6px;
+            -webkit-border-radius: 6px;
+            border-radius: 6px !important;
+        }
+
+        .sizeB {
+            width: 50px;
+            height: 50px;
+            margin-right: 6px;
+            margin-top: 6px;
+        }
+        .button1 {background-color: #4CAF50;}
+        .button3 {background-color: #f44336;}
+
+    </style>
     <script src="../js/jQuery3.3/jquery-3.3.1.min.js"></script>
     <script type="text/javascript">
         var ws;
@@ -53,29 +72,39 @@
             messageField.value = '';
         }
 
+
         $(document).ready(function () {
             //init();
-            // public class ReCaptcha {
-            //     private String imgKey;
-            //     private String imgBase64Str;
-            //     private String prompt;
-            //     private String value;
-            //     }
-            //alert($("#login").val());
 
             var jsonObjTest = {
                 imgKey: "imgKey--111",
                 imgBase64Str: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHIAAAAhCAYAAAAFx/8kAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAANvSURBVGhD7ZTBcRsxDEXVRA5uIxXklHpcgiYzObmD1JEeckpNCj7CzwGhT5qy1pbk5Zv5412Qu4bxlj6cDofTKIeXF1lnfv39KuvM9x+/ZZ15enqWdebPl5+yzhyPR1ln9tL/f5ED/EUD/EUDfBADfBADfBADfBADdtH/ErlEVqYHcbTfI3KvIr/ZexH0z2sV9J9rkfsSKQQw/iLeC1xk2J/jInHdoRlEehbxQeC6QzOI9CxS+09QylYi8x7mcUWScl9FxrWAD4LrIlUkIqiDCM/ETPU/YEZkXo+5nciEv6iH7W9EZqzWiBR7pMhAIzKtAfkhBhqRaQ1cKjKC+yyS8B79x3rmMUQaF4tMnIlMe6b6j+tpz5YiM6hRpFoHF4nE5rcGL1J1BoNQdQaDUHUGg1B1BoNQ9dl8mv6HJ9K+Tmzqfa3AvwhF2V9PZIezExn32nVzIgV+Iv0iPM+99rPpX1D75560d3QicYriiYywxhPZI55Itc/7H+D9v/qv1f6g6UFkyjNL5D2KFNmrSA6eIjNcfyyRuM6U9SXyXkWScl9FxjVQalVkXi8MRRqNyLQGXGRcj/vs561EAtQpUu1B7eNFKqzeFQmstrnItH4LkXHw3n8HrEeRCOH9x4g0pl4kBuDYfSNSrL9JZMg9iwRZZM6mInHTC16k6rPBIFSdwSBUncEgVJ3BIFSd2Uv/73sijfpFxz0hUydygJ9IvxDvsJ/ef6wlvH/APWlvPpHx9CAzJ3LEpidyxGYiO2wisve8XS+R5Q+qg+iwuciI3fsg1FphKNJoRKY1cNZ/2hP7jwPn0K8RiXdEkYrbiyz3PohYT3xWkdyD/rk3g/r7iwT2RzWDyFitGUSk1K4SaTQi87rdn4lMnIlMe7ofYuG9RHL9NiLjH1ruuyKB1arIznojUnAmMqURKaiDCM/EDPs3KJLDzkPviQTYR5HxGd4jFNljG5GG/KJD6iAUVm9Exn3lfkok4J4UFzmgGYR4fti/cY1IEEWqXNS/oBGJZnvBi1SdwYtUfTYYhKozGISqMxiEqjN76X/uRA7wL2IAfomTTgIz80WP2OSLHoD+8ymK3EX/0/9aB0yL7PAIIkcskYUlcol0lsgl0lkiC0vkEukskRuKRDO94EWqzuBFqs5gEKo+GwxC1RkMQtWZffT/fPoHWfU783IAAVkAAAAASUVORK5CYII=",
-                prompt: "prompt",
+                prompt: "请输入香蕉行！",
                 value: ""
             };
 
+            $("#imgNum").attr("src", jsonObjTest.imgBase64Str);
+            $("#prompt").text(jsonObjTest.prompt);
+
+            $("input[name='numberName']").click(function () {
+                $("#messageValue").val($("#messageValue").val() + $(this).val());
+            });
+
+            $("input[name='clearName']").click(function () {
+                $("#messageValue").val("");
+            });
+
+            $("input[name='confirmName']").click(function () {
+                //TODO
+            });
 
         });
+
+
     </script>
 </head>
 <body bgcolor="#81d4fa">
-<div id="body" align="center">
+<div id="body" align="center" style="display:none;">
     <div id="chatbox">
         <br><br>
         <textarea id="messages" readonly="readonly"></textarea>
@@ -87,6 +116,26 @@
             <input type="button" name="submitmsg" id="sendMessageButton" value="Send" onclick="sendMessage();"/>
         </form>
     </div>
+</div>
+<div align="center">
+    <BR><BR><BR><BR><BR><BR>
+    <img id="imgNum" src="">
+    <BR><BR><BR>
+    <input type="text" id="messageValue" value="" style="width:180px;height: 50px;font-size: 20px;"/><BR>
+    <div id="prompt" style="margin-top: 5px;"></div>
+    <BR><BR>
+    <input type="button" name="numberName" class="radius6 sizeB " value="1"/>
+    <input type="button" name="numberName" class="radius6 sizeB " value="2"/>
+    <input type="button" name="numberName" class="radius6 sizeB " value="3"/><br>
+    <input type="button" name="numberName" class="radius6 sizeB " value="4"/>
+    <input type="button" name="numberName" class="radius6 sizeB " value="5"/>
+    <input type="button" name="numberName" class="radius6 sizeB " value="6"/><br>
+    <input type="button" name="numberName" class="radius6 sizeB " value="7"/>
+    <input type="button" name="numberName" class="radius6 sizeB " value="8"/>
+    <input type="button" name="numberName" class="radius6 sizeB " value="9"/><br>
+    <input type="button" name="clearName" class="radius6 sizeB button3" value="清除"/>
+    <input type="button" name="numberName" class="radius6 sizeB " value="0"/>
+    <input type="button" name="confirmName" class="radius6 sizeB button1" value="确定"/><br>
 </div>
 </body>
 </html>
