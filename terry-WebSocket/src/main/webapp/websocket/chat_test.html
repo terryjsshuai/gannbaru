@@ -40,7 +40,7 @@
             var loginField = document.getElementById("login");
             loginField.value = decodedLogin;
 
-            ws = new WebSocket("ws://192.168.1.3:8080/chat");
+            ws = new WebSocket("ws://192.168.1.3:8081/chat");
 
             ws.onopen = function (event) {
                 ws.send(document.getElementById("login").value + " joined to us");
@@ -80,7 +80,7 @@
 
 
         $(document).ready(function () {
-            //init();
+            // init();
 
             var jsonObjTest = {
                 imgKey: "imgKey--111",

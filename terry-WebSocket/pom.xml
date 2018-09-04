@@ -50,7 +50,7 @@
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-util</artifactId>
-            <version>9.2.15.v20160210</version>
+            <version>9.4.12.v20180830</version>
         </dependency>
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
@@ -76,6 +76,11 @@
             <groupId>org.eclipse.jetty.websocket</groupId>
             <artifactId>websocket-servlet</artifactId>
             <version>9.2.26.v20180806</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty.websocket</groupId>
+            <artifactId>websocket-server</artifactId>
+            <version>9.4.12.v20180830</version>
         </dependency>
     </dependencies>
 </project>

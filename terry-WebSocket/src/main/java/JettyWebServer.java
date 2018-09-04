@@ -18,23 +18,26 @@ public class JettyWebServer extends Thread {
             ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
             context.addServlet(new ServletHolder(new WebSocketChatServlet()), "/chat");
 
-            ResourceHandler resource_handler = new ResourceHandler();
-            resource_handler.setResourceBase("src/com/phoenixlegend/web/webapp");
-            resource_handler.setDirectoriesListed(true);
-            resource_handler.setWelcomeFiles(new String[]{"index.html"});
+            String resourceBase = "src/main/webapp/websocket";
+            ResourceHandler resourceHandler = new ResourceHandler();
+            resourceHandler.setResourceBase(resourceBase);
+            resourceHandler.setDirectoriesListed(true);
+            resourceHandler.setWelcomeFiles(new String[]{"chat_test.html"});
 
             WebAppContext webAppContext = new WebAppContext("webapp", "/");
-            webAppContext.setResourceBase("src/com/phoenixlegend/web/webapp");
+            webAppContext.setResourceBase(resourceBase);
             webAppContext.setClassLoader(Thread.currentThread().getContextClassLoader());
 
             HandlerList handlers = new HandlerList();
-            handlers.setHandlers(new Handler[]{resource_handler, context, webAppContext});
+            handlers.setHandlers(new Handler[]{resourceHandler, context, webAppContext});
 
-            InetSocketAddress address = new InetSocketAddress("192.168.1.3", 8080);
+            InetSocketAddress address = new InetSocketAddress("10.20.0.16", 2222);
             Server server = new Server(address);
             server.setHandler(handlers);
             server.start();
             server.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
         }
