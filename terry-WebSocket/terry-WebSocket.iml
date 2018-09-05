@@ -44,5 +44,6 @@
     <orderEntry type="library" name="Maven: org.eclipse.jetty.websocket:websocket-common:9.4.11.v20180605" level="project" />
     <orderEntry type="library" name="Maven: org.eclipse.jetty.websocket:websocket-client:9.4.11.v20180605" level="project" />
     <orderEntry type="library" name="Maven: org.eclipse.jetty:jetty-client:9.4.11.v20180605" level="project" />
+    <orderEntry type="library" name="Maven: com.alibaba:fastjson:1.2.49" level="project" />
   </component>
 </module>
