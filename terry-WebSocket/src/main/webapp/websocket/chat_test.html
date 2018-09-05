@@ -32,7 +32,7 @@
     <script src="../js/jQuery3.3/jquery-3.3.1.min.js"></script>
     <script type="text/javascript">
         var ws;
-
+//参考文档 ： http://www.runoob.com/html/html5-websocket.html
         function init() {
             // var login = window.location.search;
             // login = login.substring(login.indexOf("=") + 1);
@@ -45,7 +45,7 @@
             ws = new WebSocket(wsStr);
 
             ws.onopen = function (event) {
-                //ws.send(document.getElementById("login").value + " joined to us");
+                ws.send("getReCaptcha");
             };
 
             ws.onmessage = function (event) {
