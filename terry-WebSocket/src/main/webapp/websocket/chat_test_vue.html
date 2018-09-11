@@ -1,0 +1,114 @@
+<!DOCTYPE HTML>
+<html xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8"/>
+    <title>Chat</title>
+    <link href="style.css" rel="stylesheet">
+    <style>
+        .radius6 {
+            /*-moz-border-radius: 6px;*/
+            /*-ms-border-radius: 6px;*/
+            /*-o-border-radius: 6px;*/
+            /*-webkit-border-radius: 6px;*/
+            border: none;
+            border-radius: 30px !important;
+        }
+
+        .radius6:active {
+            box-shadow: 0 5px #666;
+            transform: translateY(4px);
+        }
+
+        .sizeB {
+            width: 50px;
+            height: 50px;
+            margin-right: 6px;
+            margin-top: 6px;
+            cursor: pointer;
+        }
+
+        .button1 {
+            background-color: #4CAF50;
+        }
+
+        .button3 {
+            background-color: #f44336;
+        }
+
+    </style>
+
+</head>
+<body bgcolor="#81d4fa">
+
+<div align="center" id="app">
+    <BR><BR><BR><BR><BR><BR>
+    <img id="imgNum" v-bind:src="imgUrl">
+    <div id="prompt" style="margin-top: 5px;">{{promptMsg}}</div>
+    <BR><BR>
+    <input type="text" id="messageValue" v-model="messageValue" style="width:180px;height: 50px;font-size: 20px;"/><BR>
+    <BR><BR>
+    <input type="button" name="numberName" class="radius6 sizeB " value="1" v-on:click="pressClick(1)"/>
+    <input type="button" name="numberName" class="radius6 sizeB " value="2" v-on:click="pressClick(2)"/>
+    <input type="button" name="numberName" class="radius6 sizeB " value="3" v-on:click="pressClick(3)"/><br>
+    <input type="button" name="numberName" class="radius6 sizeB " value="4" v-on:click="pressClick(4)"/>
+    <input type="button" name="numberName" class="radius6 sizeB " value="5" v-on:click="pressClick(5)"/>
+    <input type="button" name="numberName" class="radius6 sizeB " value="6" v-on:click="pressClick(6)"/><br>
+    <input type="button" name="numberName" class="radius6 sizeB " value="7" v-on:click="pressClick(7)"/>
+    <input type="button" name="numberName" class="radius6 sizeB " value="8" v-on:click="pressClick(8)"/>
+    <input type="button" name="numberName" class="radius6 sizeB " value="9" v-on:click="pressClick(9)"/><br>
+    <input type="button" name="clearName" class="radius6 sizeB button3" value="清除" v-on:click="pressClear"/>
+    <input type="button" name="numberName" class="radius6 sizeB " value="0" v-on:click="pressClick(0)"/>
+    <input type="button" name="confirmName" class="radius6 sizeB button1" value="确定" v-on:click="pressSend"/><br>
+</div>
+</body>
+</html>
+
+<script src="../js/vue2.5.17/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            messageValue: "",
+            imgUrl: "",
+            promptMsg: "",
+            websock: null
+        },
+        methods: {
+            initWebSocket() {
+                var wsStr = "ws://10.20.0.16:2222/chat";
+                this.websock = new WebSocket(wsStr);
+                this.websock.onopen = this.webSocketOnMessage;
+                //this.websock.onmessage = this.webSocketOnMessage;
+                this.websock.onclose = this.webSocketClose;
+            },
+            webSocketOnMessage(e) {
+                var JData = JSON.parse(e.data);
+                this.imgUrl = JData.imgBase64Str;
+                this.promptMsg = JData.prompt;
+            },
+            webSocketSend(agentData) {
+                if (this.websock.readyState === this.websock.OPEN) {
+                    this.websock.send(agentData);
+                }
+            },
+            webSocketClose(e) {
+                console.log("connection closed (" + e.code + ")");
+            },
+            created() {
+                this.initWebSocket()
+            },
+            pressClick: function (e) {
+                this.messageValue = this.messageValue + "" + e;
+            },
+            pressClear: function () {
+                this.messageValue = "";
+            },
+            pressSend: function () {
+                this.webSocketSend(this.messageValue);
+            }
+        }
+    });
+
+    vm.initWebSocket();
+
+</script>
