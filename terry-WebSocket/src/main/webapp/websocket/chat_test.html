@@ -53,17 +53,20 @@
             }
         }
 
+        var textValue="";
 
         function initButton(jsonObjTest) {
             $("#imgNum").attr("src", jsonObjTest.imgBase64Str);
             $("#prompt").text(jsonObjTest.prompt);
 
             $("input[name='numberName']").click(function () {
-                $("#messageValue").val($("#messageValue").val() + $(this).val());
+                textValue += $(this).val();
+                $("#messageValue").val(textValue);
             });
 
             $("input[name='clearName']").click(function () {
-                $("#messageValue").val("");
+                textValue="";
+                $("#messageValue").val(textValue);
             });
 
             $("input[name='confirmName']").click(function () {
