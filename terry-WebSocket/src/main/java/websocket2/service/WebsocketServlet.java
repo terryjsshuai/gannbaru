@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "WebSocket Servlet", loadOnStartup = 1, urlPatterns = {"/ws"})
+@WebServlet(name = "WebSocket Servlet", urlPatterns = {"/ws"})
 public class WebsocketServlet extends WebSocketServlet {
     @Override
     public void configure(WebSocketServletFactory factory) {
