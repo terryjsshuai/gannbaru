@@ -3,6 +3,7 @@
     String path = request.getContextPath();
     String basePath = "//" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
+<!DOCTYPE HTML>
 <html>
 <head>
     <meta charset="utf-8"/>
@@ -13,18 +14,19 @@
             width: 80%;
             background-color: #81d4fa;
         }
+        div
 
         .radius6 {
             border: none;
-            border-radius: 50% !important;
+            border-radius: 30rem !important;
         }
 
         .sizeB {
-            font-size: 1.2em;
-            width: 9%;
-            height: 9%;
-            margin-right: 1%;
-            margin-top: 1%;
+            font-size: 1rem;
+            width: 3.125rem;
+            height: 3.125rem;
+            margin-right: 0.375rem;
+            margin-top: 0.375rem;
             cursor: pointer;
         }
 
@@ -47,7 +49,9 @@
 
             //判断当前浏览器是否支持WebSocket
             if ('WebSocket' in window) {
-                websocket = new WebSocket("ws:<%=basePath%>wechat");
+                var wsServer = "ws:<%=basePath%>ws";
+                //alert(wsServer);
+                websocket = new WebSocket(wsServer);
                 //连接发生错误的回调方法
                 websocket.onerror = function () {
                     showMessage("WebSocket连接发生错误");
@@ -157,7 +161,7 @@
 </head>
 <body class="body">
 
-<div align="center">
+<div id="webDiv" align="center">
     <BR>
     <BR> <input type="hidden" id="userId" value='<%=request.getAttribute("userId") %>' style="float:center; width:99%; border:1px"/>
     <BR> <input type="hidden" id="imgKey" value=""/>
