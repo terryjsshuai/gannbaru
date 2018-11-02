@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class MapTestInJava8 {
     public static void main(String[] args) {
-
+        //现在我们要做一个操作，把list中的对象，按照属性男女分组，然后把年龄汇总
         //学生的集合
         List<Student> students = new ArrayList<>();
         students.add(new Student("张三", "男", 18));
