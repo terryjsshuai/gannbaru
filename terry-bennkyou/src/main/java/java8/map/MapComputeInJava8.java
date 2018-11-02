@@ -5,7 +5,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class MapComputeInJava8 {
     public static void main(String[] args) {
-
+        //现在我们要做一个操作，统计字符串中每一个的 单词出现的次数。
         Map<String, Integer> wordCounts = new ConcurrentHashMap<>(10);
         String s =
                 "Lorem ipsum dolor sit amet consetetur iam nonumy sadipscing " +

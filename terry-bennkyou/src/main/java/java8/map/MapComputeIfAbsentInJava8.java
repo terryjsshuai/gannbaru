@@ -24,6 +24,6 @@ public class MapComputeIfAbsentInJava8 {
             s.add(student);
         }
 
-        System.out.println(resultMap);
+        resultMap.entrySet().forEach(e -> System.out.println(e.getKey() + " : " + e.getValue()));
     }
 }
