@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>设置表格有滚动条</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .tf {
+            /*设置相邻单元格的边框间的距离*/
+            border-spacing: 0;
+            /*表格设置合并边框模型*/
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        /*关键设置 tbody出现滚动条*/
+        .tf tbody {
+            display: block;
+            height: 150px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+        }
+
+        .tf thead,
+        tbody tr {
+            display: table;
+            width: 100%;
+            table-layout: fixed;
+        }
+
+        /*关键设置：滚动条默认宽度是16px 将thead的宽度减16px*/
+        .tf thead {
+            width: calc(100% - 1em)
+        }
+
+        .tf thead th {
+            background: #ccc;
+        }
+
+    </style>
+    <script type="text/javascript" src="../JS/jQuery/jquery-3.4.1.js"></script>
+
+</head>
+<body>
+<table id="bt_table" width="90%" border="1" class="tf">
+    <thead>
+    <tr>
+        <th>姓名</th>
+        <th>年龄</th>
+        <th>出生年月</th>
+        <th>手机号码</th>
+        <th>单位</th>
+    </tr>
+    </thead>
+    <tbody id="bt_tbody">
+    <tr id="tb_tr">
+        <td>张三</td>
+        <td>18</td>
+        <td>1990-9-9</td>
+        <td>13682299090</td>
+        <td>阿里巴巴</td>
+    </tr>
+    <tr>
+        <td>李四</td>
+        <td>18</td>
+        <td>1990-9-9</td>
+        <td>13682299090</td>
+        <td>阿里巴巴与四十大盗</td>
+    </tr>
+    <tr>
+        <td>王五</td>
+        <td>18</td>
+        <td>1990-9-9</td>
+        <td>13682299090</td>
+        <td>腾讯科技</td>
+    </tr>
+    <tr>
+        <td>孟想</td>
+        <td>18</td>
+        <td>1990-9-9</td>
+        <td>13682299090</td>
+        <td>浏阳河就业</td>
+    </tr>
+    <tr>
+        <td>孟想</td>
+        <td>18</td>
+        <td>1990-9-9</td>
+        <td>13682299090</td>
+        <td>浏阳河就业</td>
+    </tr>
+    <tr>
+        <td>孟想</td>
+        <td>18</td>
+        <td>1990-9-9</td>
+        <td>13682299090</td>
+        <td>浏阳河就业</td>
+    </tr>
+    <tr>
+        <td>孟想</td>
+        <td>18</td>
+        <td>1990-9-9</td>
+        <td>13682299090</td>
+        <td>浏阳河就业</td>
+    </tr>
+    <tr>
+        <td>孟想</td>
+        <td>18</td>
+        <td>1990-9-9</td>
+        <td>13682299090</td>
+        <td>浏阳河就业</td>
+    </tr>
+    <tr>
+        <td>孟想</td>
+        <td>18</td>
+        <td>1990-9-9</td>
+        <td>13682299090</td>
+        <td>浏阳河就业</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
+<script type="text/javascript">
+    $(document).ready(function () {
+        //var pageNum = 1;  // 当前页码
+        //var pageSize = 10; // 当前每页条数
+
+        $('#bt_tbody').scroll(function () {
+            var pageH = $('#bt_tbody').height(); //当前文档总高度
+            var scrollT = $('#bt_tbody').scrollTop();  //滚动条top的值
+            var srollHeightT = $('#bt_tbody')[0].scrollHeight;//表示滚动条需要滚动的高度
+            if (scrollT + pageH >= srollHeightT) {
+                getData();
+            }
+
+        });
+
+    });
+
+    function getData() {
+        alert("lalalala!")
+        $("#bt_tbody").append($("#tb_tr").clone());
+        $("#bt_tbody").append($("#tb_tr").clone());
+        $("#bt_tbody").append($("#tb_tr").clone());
+        $("#bt_tbody").append($("#tb_tr").clone());
+    }
+</script>
