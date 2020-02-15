@@ -35,5 +35,33 @@ public class ReduceTest {
         List<Integer> integers2 = Lists.newArrayList(1);
         Optional<Integer> reduce5 = integers2.stream().reduce(Integer::sum);
         System.out.println(reduce5.orElse(0));
+
+        System.out.println("=============================");
+
+        List<IntA> ints = Lists.newArrayList(new IntA(1));
+        IntA intA = ints.stream().reduce(IntA::net).orElse(new IntA(0));
+        System.out.println("intA: " + intA.getIntVal());
+
+        System.out.println("=============================");
+        List<IntA> ints1 = Lists.newArrayList(new IntA(1), new IntA(2));
+        IntA intA1 = ints1.stream().reduce(IntA::net).orElse(new IntA(0));
+        System.out.println("intA1: " + intA1.getIntVal());
+    }
+}
+
+class IntA {
+    private Integer intVal;
+
+    public IntA(final Integer intVal) {
+        this.intVal = intVal;
+    }
+
+    public Integer getIntVal() {
+        return intVal;
+    }
+
+    public IntA net(IntA intA) {
+        intVal = Integer.sum(intVal, intA.getIntVal());
+        return this;
     }
 }
